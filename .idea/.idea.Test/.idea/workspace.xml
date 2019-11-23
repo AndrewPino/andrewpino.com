@@ -1,7 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1f565d75-d843-4f4f-8df2-dcaf09fa50fe" name="Default Changelist" comment="" />
+    <list default="true" id="1f565d75-d843-4f4f-8df2-dcaf09fa50fe" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/.idea.Test/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Test/.idea/dictionaries/andrew.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Test/.idea/dictionaries/andrew.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Test/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Test/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/Views/Home/Contact.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Test/Views/Home/Contact.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Test/Views/Home/Index.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/Views/Home/Resume.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Test/Views/Home/Resume.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Test/Views/Shared/_Layout.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/bin/Debug/netcoreapp3.0/Test.Views.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Test/bin/Debug/netcoreapp3.0/Test.Views.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/bin/Debug/netcoreapp3.0/Test.Views.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Test/bin/Debug/netcoreapp3.0/Test.Views.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/obj/Debug/netcoreapp3.0/Razor/Views/Home/Contact.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Test/obj/Debug/netcoreapp3.0/Razor/Views/Home/Contact.cshtml.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/obj/Debug/netcoreapp3.0/Razor/Views/Home/Index.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Test/obj/Debug/netcoreapp3.0/Razor/Views/Home/Index.cshtml.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/obj/Debug/netcoreapp3.0/Razor/Views/Home/Resume.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Test/obj/Debug/netcoreapp3.0/Razor/Views/Home/Resume.cshtml.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/obj/Debug/netcoreapp3.0/Razor/Views/Shared/_Layout.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Test/obj/Debug/netcoreapp3.0/Razor/Views/Shared/_Layout.cshtml.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/obj/Debug/netcoreapp3.0/Test.Views.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Test/obj/Debug/netcoreapp3.0/Test.Views.dll" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/obj/Debug/netcoreapp3.0/Test.Views.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Test/obj/Debug/netcoreapp3.0/Test.Views.pdb" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,6 +37,9 @@
     </option>
     <expand />
     <select />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Test/Views/Home/Contact.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
@@ -45,22 +64,24 @@
         <option value="$PROJECT_DIR$/Test/Startup.cs" />
         <option value="$PROJECT_DIR$/Test/Properties/launchSettings.json" />
         <option value="$PROJECT_DIR$/Test/Program.cs" />
-        <option value="$PROJECT_DIR$/Test/Views/Shared/_Layout.cshtml" />
         <option value="$PROJECT_DIR$/Test/wwwroot/js/site.js" />
         <option value="$PROJECT_DIR$/Test/Views/Home/Research.cshtml" />
-        <option value="$PROJECT_DIR$/Test/Views/Home/Contact.cshtml" />
         <option value="$PROJECT_DIR$/Test/wwwroot/css/site.css" />
-        <option value="$PROJECT_DIR$/Test/Views/Home/Resume.cshtml" />
         <option value="$PROJECT_DIR$/Test/Views/Home/Projects.cshtml" />
+        <option value="$PROJECT_DIR$/Test/Views/Shared/_Layout.cshtml" />
+        <option value="$PROJECT_DIR$/Test/Views/Home/Contact.cshtml" />
         <option value="$PROJECT_DIR$/Test/Views/Home/Index.cshtml" />
+        <option value="$PROJECT_DIR$/Test/Views/Home/Resume.cshtml" />
       </list>
     </option>
   </component>
   <component name="ProjectId" id="1SgJs0YKWgCK80f0AWYehmgsdOB" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
     <property name="Rider.DefaultBreakpoints.AreToggled" value="true" />
     <property name="Rider.ProjectViewActivator.IsNotFirstRun" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -128,7 +149,7 @@
       <workItem from="1571979519585" duration="47226000" />
       <workItem from="1572892235599" duration="4512000" />
       <workItem from="1572991293270" duration="43203000" />
-      <workItem from="1573435489201" duration="15793000" />
+      <workItem from="1573435489201" duration="27038000" />
     </task>
     <servers />
   </component>
@@ -137,6 +158,17 @@
   </component>
   <component name="UnityProjectConfiguration" hasMinimizedUI="false" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="true" />
   </component>
