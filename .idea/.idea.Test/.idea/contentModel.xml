@@ -22,6 +22,7 @@
           <e p="Home" t="Include">
             <e p="Contact.cshtml" t="Include" />
             <e p="Index.cshtml" t="Include" />
+            <e p="Practice.cshtml" t="Include" />
             <e p="Projects.cshtml" t="Include" />
             <e p="References.cshtml" t="Include" />
             <e p="Research.cshtml" t="Include" />

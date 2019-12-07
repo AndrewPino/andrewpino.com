@@ -37,3 +37,4 @@
 /home/andrew/RiderProjects/Test/Test/obj/Debug/netcoreapp3.0/Razor/Views/Home/Resume.cshtml.g.cs
 /home/andrew/RiderProjects/Test/Test/obj/Debug/netcoreapp3.0/Razor/Views/Home/Projects.cshtml.g.cs
 /home/andrew/RiderProjects/Test/Test/obj/Debug/netcoreapp3.0/Razor/Views/Home/References.cshtml.g.cs
+/home/andrew/RiderProjects/Test/Test/obj/Debug/netcoreapp3.0/Razor/Views/Home/Practice.cshtml.g.cs

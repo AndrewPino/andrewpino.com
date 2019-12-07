@@ -2,21 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1f565d75-d843-4f4f-8df2-dcaf09fa50fe" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/.idea.Test/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Test/.idea/dictionaries/andrew.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Test/.idea/dictionaries/andrew.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Test/Views/Home/Practice.cshtml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Test/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Test/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Test/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Test/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test/Views/Home/Contact.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Test/Views/Home/Contact.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/Views/Home/Index.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Test/Views/Home/Index.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test/Views/Home/Resume.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Test/Views/Home/Resume.cshtml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/Views/Shared/_Layout.cshtml" beforeDir="false" afterPath="$PROJECT_DIR$/Test/Views/Shared/_Layout.cshtml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test/bin/Debug/netcoreapp3.0/Test.Views.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Test/bin/Debug/netcoreapp3.0/Test.Views.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test/bin/Debug/netcoreapp3.0/Test.Views.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Test/bin/Debug/netcoreapp3.0/Test.Views.pdb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test/obj/Debug/netcoreapp3.0/Razor/Views/Home/Contact.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Test/obj/Debug/netcoreapp3.0/Razor/Views/Home/Contact.cshtml.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/obj/Debug/netcoreapp3.0/Razor/Views/Home/Index.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Test/obj/Debug/netcoreapp3.0/Razor/Views/Home/Index.cshtml.g.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test/obj/Debug/netcoreapp3.0/Razor/Views/Home/Resume.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Test/obj/Debug/netcoreapp3.0/Razor/Views/Home/Resume.cshtml.g.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Test/obj/Debug/netcoreapp3.0/Razor/Views/Shared/_Layout.cshtml.g.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Test/obj/Debug/netcoreapp3.0/Razor/Views/Shared/_Layout.cshtml.g.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/obj/Debug/netcoreapp3.0/Test.RazorCoreGenerate.cache" beforeDir="false" afterPath="$PROJECT_DIR$/Test/obj/Debug/netcoreapp3.0/Test.RazorCoreGenerate.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test/obj/Debug/netcoreapp3.0/Test.Views.dll" beforeDir="false" afterPath="$PROJECT_DIR$/Test/obj/Debug/netcoreapp3.0/Test.Views.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Test/obj/Debug/netcoreapp3.0/Test.Views.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/Test/obj/Debug/netcoreapp3.0/Test.Views.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Test/obj/Debug/netcoreapp3.0/Test.csproj.FileListAbsolute.txt" beforeDir="false" afterPath="$PROJECT_DIR$/Test/obj/Debug/netcoreapp3.0/Test.csproj.FileListAbsolute.txt" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -46,6 +44,7 @@
     <setting file="file://$PROJECT_DIR$/Test/Views/Home/Research.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Test/Views/Home/Resume.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Test/Program.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Test/Views/Home/Practice.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Test/Startup.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Test/Controllers/HomeController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Test/Views/Home/References.cshtml" root0="FORCE_HIGHLIGHTING" root1="FORCE_HIGHLIGHTING" />
@@ -69,8 +68,9 @@
         <option value="$PROJECT_DIR$/Test/wwwroot/css/site.css" />
         <option value="$PROJECT_DIR$/Test/Views/Home/Projects.cshtml" />
         <option value="$PROJECT_DIR$/Test/Views/Shared/_Layout.cshtml" />
-        <option value="$PROJECT_DIR$/Test/Views/Home/Contact.cshtml" />
         <option value="$PROJECT_DIR$/Test/Views/Home/Index.cshtml" />
+        <option value="$PROJECT_DIR$/Test/Views/Home/Contact.cshtml" />
+        <option value="$PROJECT_DIR$/Test/Views/Home/Practice.cshtml" />
         <option value="$PROJECT_DIR$/Test/Views/Home/Resume.cshtml" />
       </list>
     </option>
@@ -149,8 +149,16 @@
       <workItem from="1571979519585" duration="47226000" />
       <workItem from="1572892235599" duration="4512000" />
       <workItem from="1572991293270" duration="43203000" />
-      <workItem from="1573435489201" duration="27038000" />
+      <workItem from="1573435489201" duration="30258000" />
     </task>
+    <task id="LOCAL-00001" summary="Fixed banner image width on resume page">
+      <created>1574476398116</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1574476398116</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -171,6 +179,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="LOCAL_CHANGES_DETAILS_PREVIEW_SHOWN" value="true" />
+    <MESSAGE value="Fixed banner image width on resume page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed banner image width on resume page" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
