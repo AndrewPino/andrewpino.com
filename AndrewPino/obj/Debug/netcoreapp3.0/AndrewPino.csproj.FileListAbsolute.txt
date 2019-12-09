@@ -38,3 +38,5 @@
 /home/andrew/RiderProjects/AndrewPino/AndrewPino/obj/Debug/netcoreapp3.0/AndrewPino.dll
 /home/andrew/RiderProjects/AndrewPino/AndrewPino/obj/Debug/netcoreapp3.0/AndrewPino.pdb
 /home/andrew/RiderProjects/AndrewPino/AndrewPino/obj/Debug/netcoreapp3.0/AndrewPino.csproj.CopyComplete
+/home/andrew/RiderProjects/AndrewPino/AndrewPino/obj/Debug/netcoreapp3.0/Razor/Views/Home/Error.cshtml.g.cs
+/home/andrew/RiderProjects/AndrewPino/AndrewPino/obj/Debug/netcoreapp3.0/Razor/Views/Home/Submission.cshtml.g.cs

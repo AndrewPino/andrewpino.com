@@ -2,38 +2,39 @@
   <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-6">
       <div class="form-wrapper">
-        <form>
+        <form asp-action="Submission" asp-controller="Home" method="post">
+          @Html.AntiForgeryToken()
           <!-- inputs -->
           <div class="form-group">
-            <label class="sr-only" for="name">Name</label>
+            <label class="sr-only" for="Name">Name</label>
             <div class="input-group">
               <div class="input-group-addon">
                 <span class="glyphicon glyphicon-user" aria-hidden="true"></span>
               </div>
-              <input type="text" class="form-control" id="name" placeholder="Name">
+              <input type="text" class="form-control" id="Name" name="Name" placeholder="Name">
             </div>
           </div>
           <div class="form-group">
-            <label class="sr-only" for="email">Email</label>
+            <label class="sr-only" for="Email">Email</label>
             <div class="input-group">
               <div class="input-group-addon">
                 <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span>
               </div>
-              <input type="text" class="form-control" id="email" placeholder="Email">
+              <input type="text" class="form-control" id="Email" name="Email" placeholder="Email">
             </div>
           </div>
           <div class="form-group">
-            <label class="sr-only" for="subject">Subject</label>
+            <label class="sr-only" for="Subject">Subject</label>
             <div class="input-group">
               <div class="input-group-addon">
                 <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
               </div>
-              <input type="text" class="form-control" id="subject" placeholder="Subject">
+              <input type="text" class="form-control" id="Subject" name="Subject" placeholder="Subject">
             </div>
           </div>
           <div class="form-group">
-            <label class="sr-only" for="message">Message</label>
-            <textarea class="form-control" id="message" rows="6" placeholder="Message"></textarea>
+            <label class="sr-only" for="Message">Message</label>
+            <textarea class="form-control" id="Message" name="Message" rows="6" placeholder="Message" itemid="message"></textarea>
           </div>
 
           <!-- buttons -->

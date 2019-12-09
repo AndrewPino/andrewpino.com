@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Net.Mail;
 using System.Threading.Tasks;
 using AndrewPino.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -38,6 +39,24 @@ namespace AndrewPino.Controllers
         [Route("Contact")]
         public IActionResult Contact()
         {
+            return View();
+        }
+
+        [Route("Submission"), HttpPost(), ValidateAntiForgeryToken]
+        public IActionResult Submission(ContactFormModel model)
+        {
+            MailMessage mailObj = new MailMessage(
+                model.Email, "andrew@andrewpino.com", model.Subject, $"Name: {model.Name}\r\n\r\n{model.Message}");
+            SmtpClient smtpServer = new SmtpClient("127.0.0.1");
+            try
+            {
+                smtpServer.Send(mailObj);
+            }
+            catch (Exception ex)
+            {
+                var errorModel = new ErrorViewModel {Message = ex.Message};
+                return View("Error", errorModel);
+            }
             return View();
         }
         
