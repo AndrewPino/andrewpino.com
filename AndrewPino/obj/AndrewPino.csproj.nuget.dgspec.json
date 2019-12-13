@@ -14,16 +14,16 @@
         "outputPath": "/home/andrew/RiderProjects/AndrewPino/AndrewPino/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "/home/andrew/.nuget/NuGet/NuGet.Config"
+          "/home/andrew/.config/NuGet/NuGet.Config"
         ],
         "originalTargetFrameworks": [
-          "netcoreapp3.0"
+          "netcoreapp3.1"
         ],
         "sources": {
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
-          "netcoreapp3.0": {
+          "netcoreapp3.1": {
             "projectReferences": {}
           }
         },
@@ -34,7 +34,13 @@
         }
       },
       "frameworks": {
-        "netcoreapp3.0": {
+        "netcoreapp3.1": {
+          "dependencies": {
+            "Captcha": {
+              "target": "Package",
+              "version": "[4.4.2, )"
+            }
+          },
           "imports": [
             "net461",
             "net462",
@@ -44,16 +50,7 @@
             "net48"
           ],
           "assetTargetFallback": true,
-          "warn": true,
-          "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "/usr/share/dotnet/sdk/3.0.100/RuntimeIdentifierGraph.json"
+          "warn": true
         }
       }
     }

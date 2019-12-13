@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using BotDetect.Web;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpOverrides;
@@ -61,6 +62,12 @@ namespace AndrewPino
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+            
+            // configures Session middleware
+            // app.UseSession();
+
+            // configure your application pipeline to use Captcha middleware
+            // app.UseCaptcha(Configuration);
         }
     }
 }

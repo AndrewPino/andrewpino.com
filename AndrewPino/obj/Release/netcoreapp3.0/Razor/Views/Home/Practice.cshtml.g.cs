@@ -27,7 +27,7 @@ using AndrewPino.Models;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"0114afda61c7c711e2f9db7eaa07ac9bf2723b05", @"/Views/Home/Practice.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"2dd52c46f024792d0c76972e2635733f9433ecca", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"fa63b07b4769b6285b520dad0f7454792313d137", @"/Views/_ViewImports.cshtml")]
     public class Views_Home_Practice : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998

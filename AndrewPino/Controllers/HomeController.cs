@@ -5,6 +5,7 @@ using System.Linq;
 using System.Net.Mail;
 using System.Threading.Tasks;
 using AndrewPino.Models;
+using BotDetect.Web.Mvc;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 
@@ -43,8 +44,30 @@ namespace AndrewPino.Controllers
         }
 
         [Route("Submission"), HttpPost(), ValidateAntiForgeryToken]
+        // [CaptchaValidationActionFilter("CaptchaCode", "AndrewPinoCaptcha", "Incorrect CAPTCHA code")]
         public IActionResult Submission(ContactFormModel model)
         {
+//            if (ModelState.IsValid)
+//            {
+//                MvcCaptcha.ResetCaptcha("AndrewPinoCaptcha"); 
+//                
+//                MailMessage mailObj = new MailMessage(
+//                    model.Email, "andrew@andrewpino.com", model.Subject, $"Name: {model.Name}\r\n\r\n{model.Message}");
+//                SmtpClient smtpServer = new SmtpClient("127.0.0.1");
+//                try
+//                {
+//                    smtpServer.Send(mailObj);
+//                }
+//                catch (Exception ex)
+//                {
+//                    var errorModel = new ErrorViewModel {Message = ex.Message};
+//                    return View("Error", errorModel);
+//                }
+//                return View();
+//            }
+//            
+//            var captchaErrorModel = new ErrorViewModel {Message = "Incorrect CAPTCHA code"};
+//            return View("Error", captchaErrorModel);
             MailMessage mailObj = new MailMessage(
                 model.Email, "andrew@andrewpino.com", model.Subject, $"Name: {model.Name}\r\n\r\n{model.Message}");
             SmtpClient smtpServer = new SmtpClient("127.0.0.1");
@@ -66,6 +89,12 @@ namespace AndrewPino.Controllers
             return View();
         }
         public IActionResult References()
+        {
+            return View();
+        }
+        
+        [Route("Blog")]
+        public IActionResult Blog()
         {
             return View();
         }

@@ -9,5 +9,7 @@ namespace AndrewPino.Models
         public bool ShowRequestId => !string.IsNullOrEmpty(RequestId);
         
         public string Message { get; set; }
+        
+        public string CaptchaCode { get; set; }
     }
 }

@@ -1,3 +1,6 @@
+@{
+    ViewData["Title"] = "Contact Andrew Pino: Andrew Pino";
+}
 <div class="container align-content-center">
   <div class="row">
     <div class="col-lg-6 col-md-6 col-sm-6">
@@ -36,15 +39,43 @@
             <label class="sr-only" for="Message">Message</label>
             <textarea class="form-control" id="Message" name="Message" rows="6" placeholder="Message" itemid="message"></textarea>
           </div>
+          
+@*           <label asp-for="CaptchaCode">Retype the code from the picture:</label> *@
+@*           <captcha id="AndrewPinoCaptcha" user-input-id="CaptchaCode" /> *@
+@*           <div> *@
+@*             <input asp-for="CaptchaCode" /> *@
+@*             <input type="submit" value="Validate" /> *@
+@*             <span asp-validation-for="CaptchaCode"></span> *@
+@*             @if ((Context.Request.Method.ToUpper() == "POST") && ViewData.ModelState.IsValid) *@
+@*             { *@
+@*               <span class="correct">Correct!</span> *@
+@*             } *@
+@*           </div> *@
 
           <!-- buttons -->
           <div class="btn-group pull-right" role="group">
             <button type="reset" class="btn btn-outline-primary btn btn-default btn-sm small-button-width">
               <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Reset
             </button>
-            <button type="submit" class="btn btn-outline-primary btn btn-default btn-sm small-button-width">
+            <button type="submit" class="btn btn-outline-primary btn btn-default btn-sm small-button-width" data-toggle="modal" href="#ignismyModal">
               <span class="glyphicon glyphicon-envelope" aria-hidden="true"></span> Submit
             </button>
+              <div class="modal fade" id="ignismyModal" role="dialog">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label=""><span>×</span></button>
+                    </div>
+                  <div class="modal-body">
+                    <div class="thank-you-pop">
+                      <img src="http://goactionstations.co.uk/wp-content/uploads/2017/03/Green-Round-Tick.png" alt="Thank You for Your Submission">
+                        <h1>Thank You!</h1>
+                        <p>Your submission has been received and I will contact you soon</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
           </div>
         </form>
       </div>
