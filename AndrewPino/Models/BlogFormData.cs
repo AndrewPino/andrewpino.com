@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Microsoft.AspNetCore.Http;
 
 namespace AndrewPino.Models
@@ -10,6 +11,6 @@ namespace AndrewPino.Models
         
         public IFormFile Image { get; set; }
         
-        public string BlogTags { get; set; }
+        public List<int> BlogTagIds { get; set; }
     }
 }

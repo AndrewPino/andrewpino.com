@@ -26,9 +26,10 @@ namespace AndrewPino.Controllers
             return View();
         }
 
-        public IActionResult Entry()
+        public async Task<IActionResult> Entry()
         {
-            return View();
+            var tags = await Context.BlogTags.ToListAsync();
+            return View(tags);
         }
 
         [HttpPost]
@@ -41,26 +42,26 @@ namespace AndrewPino.Controllers
                 ImageUrl = await HandleFile(blogFormData.Image)
             };
 
-            blog.BlogBlogTags = await ParseBlogTags(blogFormData.BlogTags, blog);
+            blog.BlogBlogTags = await BuildBlogTagList(blogFormData.BlogTagIds, blog);
 
             Context.Blogs.Add(blog);
             await Context.SaveChangesAsync();
             
-            return View("Entry");
+            var tags = await Context.BlogTags.ToListAsync();
+            return View("Entry", tags);
         }
 
-        private async Task<List<BlogBlogTag>> ParseBlogTags(string formTags, Blog blog)
+        private async Task<List<BlogBlogTag>> BuildBlogTagList(List<int> blogTagIds, Blog blog)
         {
-            if (formTags == null || formTags.Trim() == String.Empty) 
+            if (blogTagIds == null || blogTagIds.Count == 0) 
                 return Enumerable.Empty<BlogBlogTag>().ToList();
 
             var existingTags = await Context.BlogTags.ToListAsync();
 
-            var formTagList = formTags.Split(';', StringSplitOptions.RemoveEmptyEntries)
-                .Select(t => t.Trim()).ToList();
+            var usedTags = existingTags.Where(et => blogTagIds.Contains(et.BlogTagId));
 
-            var blogBlogTags = existingTags.Where(existingTag => formTagList.Contains(existingTag.TagText))
-                .Select(tag => new BlogBlogTag
+            var blogBlogTags = 
+                usedTags.Select(tag => new BlogBlogTag
                 {
                     Blog = blog,
                     BlogTag = tag
@@ -74,10 +75,8 @@ namespace AndrewPino.Controllers
             if (file == null || file.Length == 0) return String.Empty;
             
             var fileName = file.FileName + "__" + (new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds()).ToString();
-            var filePath = "/websites/andrewpino.com.blogimages/" + fileName;
- 
-            var logFile = System.IO.File.Create(filePath);
-            var logWriter = new System.IO.StreamWriter(logFile);
+            var filePath = "/websites/andrewpino.com.images/blog/" + fileName;
+            
             using (var stream = new FileStream(filePath, FileMode.Create))
             {
                 await file.CopyToAsync(stream);
