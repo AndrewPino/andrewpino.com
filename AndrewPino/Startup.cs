@@ -12,6 +12,7 @@ using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.FileProviders;
 using Microsoft.Extensions.Hosting;
 
 namespace AndrewPino
@@ -56,8 +57,14 @@ namespace AndrewPino
             }
 
             app.UseHttpsRedirection();
-
+            
             app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions
+            {
+                FileProvider = new PhysicalFileProvider("/websites/andrewpino.com.images/blog"),
+                RequestPath = "/blog_images",
+                ServeUnknownFileTypes = true
+            });
 
             app.UseRouting();
 

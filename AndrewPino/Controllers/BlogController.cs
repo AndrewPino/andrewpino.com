@@ -21,9 +21,14 @@ namespace AndrewPino.Controllers
             Context = context;
         }
         
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var blogs = await Context.Blogs
+                .Include(bbt => bbt.BlogBlogTags).ThenInclude(b => b.BlogTag)
+                .Include(bbt => bbt.BlogComments)
+                .ToListAsync();
+            
+            return View(blogs);
         }
 
         public async Task<IActionResult> Entry()
