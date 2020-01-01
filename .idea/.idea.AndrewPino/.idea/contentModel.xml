@@ -5,15 +5,27 @@
     <e p="$APPLICATION_CONFIG_DIR$/javascript/extLibs/__code.jquery.com_jquery-1.11.1.js" t="IncludeRecursive" />
     <e p="$APPLICATION_CONFIG_DIR$/javascript/extLibs/__maxcdn.bootstrapcdn.com_bootstrap_4.0.0_js_bootstrap.js" t="IncludeRecursive" />
     <e p="$APPLICATION_CONFIG_DIR$/javascript/extLibs/__netdna.bootstrapcdn.com_twitter-bootstrap_2.3.2_js_bootstrap.js" t="IncludeRecursive" />
+    <e p="$APPLICATION_CONFIG_DIR$/javascript/extLibs/http_www.shieldui.com_shared_components_latest_js_shieldui-all.min.js" t="IncludeRecursive" />
     <e p="$USER_HOME$/.Rider2019.2/system/extResources" t="IncludeRecursive" />
     <e p="$USER_HOME$/.Rider2019.2/system/resharper-host/local/Transient/ReSharperHost/v192/SolutionCaches/_AndrewPino.1176701709.00" t="ExcludeRecursive" />
     <e p="$PROJECT_DIR$" t="IncludeFlat">
       <e p="AndrewPino" t="IncludeRecursive">
         <e p="AndrewPino.csproj" t="IncludeRecursive" />
+        <e p="BlogDb" t="Include">
+          <e p="BlogContext.cs" t="Include" />
+          <e p="DataModels" t="Include">
+            <e p="Blog.cs" t="Include" />
+            <e p="BlogBlogTag.cs" t="Include" />
+            <e p="BlogComment.cs" t="Include" />
+            <e p="BlogTag.cs" t="Include" />
+          </e>
+        </e>
         <e p="Controllers" t="Include">
+          <e p="BlogController.cs" t="Include" />
           <e p="HomeController.cs" t="Include" />
         </e>
         <e p="Models" t="Include">
+          <e p="BlogFormData.cs" t="Include" />
           <e p="ContactFormModel.cs" t="Include" />
           <e p="ErrorViewModel.cs" t="Include" />
         </e>
@@ -23,8 +35,11 @@
         </e>
         <e p="Startup.cs" t="Include" />
         <e p="Views" t="Include">
+          <e p="Blog" t="Include">
+            <e p="Entry.cshtml" t="Include" />
+            <e p="Index.cshtml" t="Include" />
+          </e>
           <e p="Home" t="Include">
-            <e p="Blog.cshtml" t="Include" />
             <e p="Contact.cshtml" t="Include" />
             <e p="Error.cshtml" t="Include" />
             <e p="Index.cshtml" t="Include" />
@@ -141,7 +156,7 @@
               <e p="jquery.validate.unobtrusive.min.js" t="Include" />
             </e>
           </e>
-          <e p="site.webmanifest" t="Include" />
+          <e p="site.webmanifest.backup-old" t="Include" />
         </e>
       </e>
       <e p="AndrewPino.sln" t="IncludeFlat" />
