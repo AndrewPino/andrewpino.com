@@ -5,6 +5,8 @@ namespace AndrewPino.Models
 {
     public class BlogFormData
     {
+        public int? BlogId { get; set; }
+        
         public string Title { get; set; }
         
         public string Body { get; set; }

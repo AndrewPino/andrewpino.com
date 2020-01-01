@@ -1,0 +1,25 @@
+@{
+    ViewData["Title"] = "Blog List";
+}
+
+@model List<BlogItem>
+
+<div class="container mt-3">
+    <form asp-controller="Blog" asp-action="EditBlog">
+        <input type="hidden" name="blogId" id="blogId"/>
+        @foreach (var item in Model)
+        {
+            <div class="row mt-3">
+                <div class="col-3">
+                    @item.CreatedDate
+                </div>
+                <div class="col-6">
+                    @item.Title
+                </div>
+                <div class="col-3">
+                    <input onclick="document.getElementById('blogId').value=@item.BlogId" type="submit" value="Edit" class="btn btn-outline-primary"/>
+                </div>
+            </div>
+        }
+    </form>
+</div>

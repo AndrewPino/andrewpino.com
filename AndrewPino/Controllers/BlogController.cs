@@ -8,6 +8,7 @@ using AndrewPino.BlogDb.DataModels;
 using AndrewPino.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
 namespace AndrewPino.Controllers
@@ -34,26 +35,91 @@ namespace AndrewPino.Controllers
         public async Task<IActionResult> Entry()
         {
             var tags = await Context.BlogTags.ToListAsync();
-            return View(tags);
+            var entry = new BlogEntry
+            {
+                AvailableBlogTags = tags.Select(t => new SelectListItem
+                {
+                    Value = t.BlogTagId.ToString(),
+                    Text = t.TagText,
+                    Selected = false
+                }).ToList()
+            };
+            
+            return View(entry);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> EditBlog([FromForm] int blogId)
+        {
+            var blog = await Context.Blogs
+                            .Include(b => b.BlogBlogTags).ThenInclude(bbt => bbt.BlogTag)
+                            .FirstOrDefaultAsync(b => b.BlogId == blogId);
+            
+            var tags = await Context.BlogTags.ToListAsync();
+            var entry = new BlogEntry
+            {
+                Blog = blog,
+                AvailableBlogTags = tags.Select(t => new SelectListItem
+                {
+                    Value = t.BlogTagId.ToString(),
+                    Text = t.TagText,
+                    Selected = blog.BlogBlogTags.Any(bbt => bbt.BlogTagId == t.BlogTagId)
+                }).ToList()
+            };
+            
+            return View("Entry", entry);
+        }
+
+        public async Task<IActionResult> List()
+        {
+            var blogs = await Context.Blogs.Select(b => new BlogItem
+            {
+                BlogId = b.BlogId,
+                Title = b.Title,
+                CreatedDate = b.CreatedDate
+            }).ToListAsync();
+
+            return View(blogs);
         }
 
         [HttpPost]
         public async Task<IActionResult> Submission([FromForm] BlogFormData blogFormData)
         {
-            var blog = new Blog
+            Blog blog;
+            if (blogFormData.BlogId.HasValue)
             {
-                Title = blogFormData.Title,
-                Body = blogFormData.Body,
-                ImageUrl = await HandleFile(blogFormData.Image)
-            };
+                blog = new Blog
+                {
+                    BlogId = blogFormData.BlogId.Value,
+                    Title = blogFormData.Title,
+                    Body = blogFormData.Body,
+                    ImageUrl = await HandleFile(blogFormData.Image)
+                };
+            }
+            else
+            {
+                blog = new Blog
+                {
+                    Title = blogFormData.Title,
+                    Body = blogFormData.Body,
+                    ImageUrl = await HandleFile(blogFormData.Image)
+                };
+            }
 
             blog.BlogBlogTags = await BuildBlogTagList(blogFormData.BlogTagIds, blog);
 
-            Context.Blogs.Add(blog);
+            if (blogFormData.BlogId.HasValue)
+            {
+                Context.Blogs.Update(blog);
+            }
+            else
+            {
+                Context.Blogs.Add(blog);
+            }
+            
             await Context.SaveChangesAsync();
             
-            var tags = await Context.BlogTags.ToListAsync();
-            return View("Entry", tags);
+            return View(blog);
         }
 
         private async Task<List<BlogBlogTag>> BuildBlogTagList(List<int> blogTagIds, Blog blog)
