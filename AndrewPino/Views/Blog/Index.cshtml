@@ -1,6 +1,9 @@
 @{
     ViewData["Title"] = "Blog for Andrew Pino: Andrew Pino";
 }
+@using System.Web
+@using Microsoft.AspNetCore.Html
+@using Pomelo.EntityFrameworkCore.MySql.Infrastructure
 @model List<AndrewPino.BlogDb.DataModels.Blog>;
 
 <div class="container mt-3">
@@ -18,7 +21,7 @@
           {
             <div class="col-12">
               <p>
-                @blog.Body
+                @Html.Raw(blog.Body)
               </p>
               @* <p><a class="btn" href="#">Read more</a></p> *@
             </div>
@@ -35,7 +38,7 @@
             </div>
             <div class="col-10">
               <p>
-                @blog.Body
+                @Html.Raw(blog.Body)
               </p>
               @* <p><a class="btn" href="#">Read more</a></p> *@
             </div>

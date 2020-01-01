@@ -2,7 +2,7 @@
     ViewData["Title"] = "Blog Entry";
 }
 @model List<AndrewPino.BlogDb.DataModels.BlogTag>
-
+<script src="~/ckeditor/ckeditor.js"></script>
 <div class="container align-content-center">
     <div class="row">
         <div class="col-md-12">
@@ -15,7 +15,13 @@
                 <div class="form-group">
                     <input type="text" name="Title" class="form-control" placeholder="Title">
                 </div>
-                <textarea name="Body" class="blog-text-block" rows="10" placeholder="What's going on?"></textarea>
+                @* <textarea name="Body" class="blog-text-block" rows="10" placeholder="What's going on?"></textarea> *@
+                <textarea name="Body" id="Body" rows="10" class="blog-text-block"></textarea>
+                <script>
+                    // Replace the <textarea id="editor1"> with a CKEditor
+                    // instance, using default configuration.
+                    CKEDITOR.replace( 'Body' );
+                </script>
                 <br>
                 <div class="form-group">
                     <select name="BlogTagIds" asp-items="@(new SelectList(@Model,"BlogTagId", "TagText"))" multiple="multiple"></select>
