@@ -78,16 +78,20 @@ namespace AndrewPino.Controllers
         private async Task<string> HandleFile(IFormFile file)
         {
             if (file == null || file.Length == 0) return String.Empty;
+
+            var splitFileName = file.FileName.Split('.', StringSplitOptions.RemoveEmptyEntries);
+            var newFileName = String.Join("", 
+                String.Join("", splitFileName.Take(splitFileName.Length - 1)), "_",
+                (new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds()).ToString(), ".", splitFileName.Last());
             
-            var fileName = file.FileName + "__" + (new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds()).ToString();
-            var filePath = "/websites/andrewpino.com.images/blog/" + fileName;
+            var filePath = "/websites/andrewpino.com.images/blog/" + newFileName;
             
             using (var stream = new FileStream(filePath, FileMode.Create))
             {
                 await file.CopyToAsync(stream);
             }
 
-            return fileName;
+            return newFileName;
         }
     }
 }
