@@ -31,8 +31,8 @@ namespace AndrewPino
         {
             services.AddControllersWithViews();
             
-            services.AddDbContext<BlogContext>(options =>
-                options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
+            //services.AddDbContext<BlogContext>(options =>
+            //    options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
 
             services.Configure<ForwardedHeadersOptions>(options =>
                 {
@@ -59,12 +59,12 @@ namespace AndrewPino
             app.UseHttpsRedirection();
             
             app.UseStaticFiles();
-            app.UseStaticFiles(new StaticFileOptions
-            {
-                FileProvider = new PhysicalFileProvider("/websites/andrewpino.com.images/blog"),
-                RequestPath = "/blog_images",
-                ServeUnknownFileTypes = true
-            });
+            //app.UseStaticFiles(new StaticFileOptions
+            //{
+            //    FileProvider = new PhysicalFileProvider("/websites/andrewpino.com.images/blog"),
+            //    RequestPath = "/blog_images",
+            //    ServeUnknownFileTypes = true
+            //});
 
             app.UseRouting();
 
