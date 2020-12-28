@@ -31,8 +31,8 @@ namespace AndrewPino
         {
             services.AddControllersWithViews();
             
-            //services.AddDbContext<BlogContext>(options =>
-            //    options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
+            services.AddDbContext<BlogContext>(options =>
+                options.UseMySql(Configuration.GetConnectionString("DefaultConnection")));
 
             services.Configure<ForwardedHeadersOptions>(options =>
                 {

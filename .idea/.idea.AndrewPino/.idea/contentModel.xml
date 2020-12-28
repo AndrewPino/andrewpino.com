@@ -10,9 +10,9 @@
           <e p="BlogContext.cs" t="Include" />
           <e p="DataModels" t="Include">
             <e p="Blog.cs" t="Include" />
-            <e p="BlogBlogTag.cs" t="Include" />
             <e p="BlogComment.cs" t="Include" />
             <e p="BlogTag.cs" t="Include" />
+            <e p="Tag.cs" t="Include" />
           </e>
         </e>
         <e p="Controllers" t="Include">

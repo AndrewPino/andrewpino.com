@@ -20,8 +20,8 @@ namespace AndrewPino.BlogDb.DataModels
 
         public DateTime CreatedDate => DateTime.Now;
         
-        public List<BlogBlogTag> BlogBlogTags { get; set; }
+        public virtual List<BlogTag> BlogTags { get; set; }
         
-        public List<BlogComment> BlogComments { get; set; }
+        public virtual List<BlogComment> BlogComments { get; set; }
     }
 }

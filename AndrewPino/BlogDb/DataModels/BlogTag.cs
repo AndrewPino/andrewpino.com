@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -11,8 +10,10 @@ namespace AndrewPino.BlogDb.DataModels
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         public int BlogTagId { get; set; }
         
-        public string TagText { get; set; }
+        public int BlogId { get; set; }
+        public virtual Blog Blog { get; set; }
         
-        public List<BlogBlogTag> BlogBlogTags { get; set; }
+        public int TagId { get; set; }
+        public virtual Tag Tag { get; set; }
     }
 }

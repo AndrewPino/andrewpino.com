@@ -50,9 +50,9 @@
                             <li class="nav-item">
                                 <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Research">Research</a>
                             </li>
-                             @*<li class="nav-item">
+                             <li class="nav-item">
                                 <a class="nav-link text-light" asp-area="" asp-controller="Blog" asp-action="Index">Blog</a>
-                            </li>*@
+                            </li>
                             @*<li class="nav-item">
                                 <a class="nav-link text-light" asp-area="" asp-controller="Home" asp-action="Contact">Contact</a>
                             </li>*@
@@ -101,6 +101,6 @@
         <script src="~/lib/jquery/dist/jquery.min.js"></script>
         <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
         <script src="~/js/site.js" asp-append-version="true"></script>
-        @RenderSection("Scripts", required: false)
+        @await RenderSectionAsync("Scripts", required: false)
     </body>
 </html>

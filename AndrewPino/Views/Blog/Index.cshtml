@@ -4,6 +4,7 @@
 @using System.Web
 @using Microsoft.AspNetCore.Html
 @using Pomelo.EntityFrameworkCore.MySql.Infrastructure
+@using System.Globalization
 @model List<AndrewPino.BlogDb.DataModels.Blog>;
 
 <div class="container mt-3">
@@ -32,7 +33,7 @@
               @if (!String.IsNullOrEmpty(blog.ImageUrl))
               {
                 <a href="#">
-                  <img src="~/blog_images/@blog.ImageUrl" class="img-thumbnail" alt="@blog.Title">
+                  <img src="https://files.andrewpino.com/blog/@blog.ImageUrl" class="img-thumbnail" alt="@blog.Title">
                 </a>
               }
             </div>
@@ -49,19 +50,19 @@
             <p></p>
             <p>
               @* <i class="far fa-user"></i> by <a href="#">John</a> *@
-              <i class="far fa-calendar-alt"></i> @blog.CreatedDate
+              <i class="far fa-calendar-alt"></i> @blog.CreatedDate.ToString(CultureInfo.InvariantCulture)
               @if (blog.BlogComments.Count > 0)
               {
-                <i class="far fa-comment-alt"></i> <a href="#">@blog.BlogComments.Count Comments</a>
+                <i class="far fa-comment-alt"></i> <a href="#">@blog.BlogComments.Count.ToString() Comments</a>
               }
               @* | <i class="far fa-share-square"></i> <a href="#">39 Shares</a> *@
-              @if (blog.BlogBlogTags.Count > 0)
+              @if (blog.BlogTags.Count > 0)
               {
                 <text>&nbsp;&nbsp;|&nbsp;&nbsp;<i class="fa fa-tags"></i> Tags&nbsp;</text>
               }
-              @foreach (var tag in blog.BlogBlogTags.Select(bbt => bbt.BlogTag))
+              @foreach (var tag in blog.BlogTags.Select(bbt => bbt.Tag))
               {
-                <span class="badge badge-pill badge-primary">@tag.TagText</span>
+                <span class="badge badge-pill badge-primary">@tag.Text</span>
               }
             </p>
           </div>

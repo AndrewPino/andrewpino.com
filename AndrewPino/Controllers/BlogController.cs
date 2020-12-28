@@ -15,17 +15,17 @@ namespace AndrewPino.Controllers
 {
     public class BlogController : Controller
     {
-        private BlogContext Context;
+        private readonly BlogContext _context;
         
         public BlogController(BlogContext context)
         {
-            Context = context;
+            _context = context;
         }
         
         public async Task<IActionResult> Index()
         {
-            var blogs = await Context.Blogs
-                .Include(bbt => bbt.BlogBlogTags).ThenInclude(b => b.BlogTag)
+            var blogs = await _context.Blogs
+                .Include(bbt => bbt.BlogTags).ThenInclude(b => b.Tag)
                 .Include(bbt => bbt.BlogComments)
                 .ToListAsync();
             
@@ -34,13 +34,13 @@ namespace AndrewPino.Controllers
 
         public async Task<IActionResult> Entry()
         {
-            var tags = await Context.BlogTags.ToListAsync();
+            var tags = await _context.Tags.ToListAsync();
             var entry = new BlogEntry
             {
                 AvailableBlogTags = tags.Select(t => new SelectListItem
                 {
-                    Value = t.BlogTagId.ToString(),
-                    Text = t.TagText,
+                    Value = t.TagId.ToString(),
+                    Text = t.Text,
                     Selected = false
                 }).ToList()
             };
@@ -51,19 +51,19 @@ namespace AndrewPino.Controllers
         [HttpPost]
         public async Task<IActionResult> EditBlog([FromForm] int blogId)
         {
-            var blog = await Context.Blogs
-                            .Include(b => b.BlogBlogTags).ThenInclude(bbt => bbt.BlogTag)
+            var blog = await _context.Blogs
+                            .Include(b => b.BlogTags).ThenInclude(bbt => bbt.Tag)
                             .FirstOrDefaultAsync(b => b.BlogId == blogId);
             
-            var tags = await Context.BlogTags.ToListAsync();
+            var tags = await _context.Tags.ToListAsync();
             var entry = new BlogEntry
             {
                 Blog = blog,
                 AvailableBlogTags = tags.Select(t => new SelectListItem
                 {
-                    Value = t.BlogTagId.ToString(),
-                    Text = t.TagText,
-                    Selected = blog.BlogBlogTags.Any(bbt => bbt.BlogTagId == t.BlogTagId)
+                    Value = t.TagId.ToString(),
+                    Text = t.Text,
+                    Selected = blog.BlogTags.Any(bbt => bbt.TagId == t.TagId)
                 }).ToList()
             };
             
@@ -72,7 +72,7 @@ namespace AndrewPino.Controllers
 
         public async Task<IActionResult> List()
         {
-            var blogs = await Context.Blogs.Select(b => new BlogItem
+            var blogs = await _context.Blogs.Select(b => new BlogItem
             {
                 BlogId = b.BlogId,
                 Title = b.Title,
@@ -106,36 +106,36 @@ namespace AndrewPino.Controllers
                 };
             }
 
-            blog.BlogBlogTags = await BuildBlogTagList(blogFormData.BlogTagIds, blog);
+            blog.BlogTags = await BuildBlogTagList(blogFormData.BlogTagIds, blog);
 
             if (blogFormData.BlogId.HasValue)
             {
-                Context.Blogs.Update(blog);
+                _context.Blogs.Update(blog);
             }
             else
             {
-                Context.Blogs.Add(blog);
+                await _context.Blogs.AddAsync(blog);
             }
             
-            await Context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
             
             return View(blog);
         }
 
-        private async Task<List<BlogBlogTag>> BuildBlogTagList(List<int> blogTagIds, Blog blog)
+        private async Task<List<BlogTag>> BuildBlogTagList(List<int> blogTagIds, Blog blog)
         {
             if (blogTagIds == null || blogTagIds.Count == 0) 
-                return Enumerable.Empty<BlogBlogTag>().ToList();
+                return Enumerable.Empty<BlogTag>().ToList();
 
-            var existingTags = await Context.BlogTags.ToListAsync();
+            var existingTags = await _context.Tags.ToListAsync();
 
-            var usedTags = existingTags.Where(et => blogTagIds.Contains(et.BlogTagId));
+            var usedTags = existingTags.Where(et => blogTagIds.Contains(et.TagId));
 
             var blogBlogTags = 
-                usedTags.Select(tag => new BlogBlogTag
+                usedTags.Select(tag => new BlogTag
                 {
                     Blog = blog,
-                    BlogTag = tag
+                    Tag = tag
                 }).ToList();
 
             return blogBlogTags;
@@ -150,13 +150,11 @@ namespace AndrewPino.Controllers
                 String.Join("", splitFileName.Take(splitFileName.Length - 1)), "_",
                 (new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds()).ToString(), ".", splitFileName.Last());
             
-            var filePath = "/websites/andrewpino.com.images/blog/" + newFileName;
-            
-            using (var stream = new FileStream(filePath, FileMode.Create))
-            {
-                await file.CopyToAsync(stream);
-            }
+            var filePath = "/var/www/andrewpino-com-images/blog/" + newFileName;
 
+            await using var stream = new FileStream(filePath, FileMode.Create);
+            await file.CopyToAsync(stream);
+            
             return newFileName;
         }
     }
