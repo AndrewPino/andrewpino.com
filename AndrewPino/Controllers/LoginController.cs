@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
@@ -30,7 +31,7 @@ namespace AndrewPino.Controllers
         {
             var user = _configuration.GetSection("BlogUser").Get<BlogUser>();
             
-            if (userName == user.UserName)
+            if (String.Equals(userName, user.UserName, StringComparison.CurrentCultureIgnoreCase))
             {
                 var passwordHasher = new PasswordHasher<string>();
                 if (passwordHasher.VerifyHashedPassword(null, user.Password, password) == PasswordVerificationResult.Success)
