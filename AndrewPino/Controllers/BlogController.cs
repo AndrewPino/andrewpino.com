@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using AndrewPino.BlogDb;
 using AndrewPino.BlogDb.DataModels;
 using AndrewPino.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -32,6 +33,7 @@ namespace AndrewPino.Controllers
             return View(blogs);
         }
 
+        [Authorize]
         public async Task<IActionResult> Entry()
         {
             var tags = await _context.Tags.ToListAsync();
@@ -48,6 +50,7 @@ namespace AndrewPino.Controllers
             return View(entry);
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> EditBlog([FromForm] int blogId)
         {
@@ -70,6 +73,7 @@ namespace AndrewPino.Controllers
             return View("Entry", entry);
         }
 
+        [Authorize]
         public async Task<IActionResult> List()
         {
             var blogs = await _context.Blogs.Select(b => new BlogItem
@@ -82,6 +86,7 @@ namespace AndrewPino.Controllers
             return View(blogs);
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<IActionResult> Submission([FromForm] BlogFormData blogFormData)
         {

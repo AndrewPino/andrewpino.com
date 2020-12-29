@@ -18,13 +18,16 @@
         <e p="Controllers" t="Include">
           <e p="BlogController.cs" t="Include" />
           <e p="HomeController.cs" t="Include" />
+          <e p="LoginController.cs" t="Include" />
         </e>
         <e p="Models" t="Include">
           <e p="BlogEntry.cs" t="Include" />
           <e p="BlogFormData.cs" t="Include" />
           <e p="BlogItem.cs" t="Include" />
+          <e p="BlogUser.cs" t="Include" />
           <e p="ContactFormModel.cs" t="Include" />
           <e p="ErrorViewModel.cs" t="Include" />
+          <e p="LoginMessage.cs" t="Include" />
         </e>
         <e p="Program.cs" t="Include" />
         <e p="Properties" t="Include">
@@ -48,6 +51,9 @@
             <e p="Research.cshtml" t="Include" />
             <e p="Resume.cshtml" t="Include" />
             <e p="Submission.cshtml" t="Include" />
+          </e>
+          <e p="Login" t="Include">
+            <e p="Index.cshtml" t="Include" />
           </e>
           <e p="Shared" t="Include">
             <e p="Error.cshtml" t="Include" />

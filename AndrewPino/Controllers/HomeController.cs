@@ -43,7 +43,7 @@ namespace AndrewPino.Controllers
             return View();
         }
 
-        [Route("Submission"), HttpPost(), ValidateAntiForgeryToken]
+        [Route("Submission"), HttpPost, ValidateAntiForgeryToken]
         // [CaptchaValidationActionFilter("CaptchaCode", "AndrewPinoCaptcha", "Incorrect CAPTCHA code")]
         public IActionResult Submission(ContactFormModel model)
         {
