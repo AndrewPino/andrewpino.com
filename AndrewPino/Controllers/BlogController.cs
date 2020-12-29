@@ -150,7 +150,7 @@ namespace AndrewPino.Controllers
                 String.Join("", splitFileName.Take(splitFileName.Length - 1)), "_",
                 (new DateTimeOffset(DateTime.UtcNow).ToUnixTimeSeconds()).ToString(), ".", splitFileName.Last());
             
-            var filePath = "/var/www/andrewpino-com-images/blog/" + newFileName;
+            var filePath = $"/var/www/andrewpino-com-images/blog/{newFileName}";
 
             await using var stream = new FileStream(filePath, FileMode.Create);
             await file.CopyToAsync(stream);
