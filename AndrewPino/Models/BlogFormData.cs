@@ -13,6 +13,8 @@ namespace AndrewPino.Models
         
         public IFormFile Image { get; set; }
         
+        public string NewTags { get; set; }
+        
         public List<int> BlogTagIds { get; set; }
     }
 }

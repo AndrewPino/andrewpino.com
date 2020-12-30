@@ -111,7 +111,13 @@ namespace AndrewPino.Controllers
                 };
             }
 
-            blog.BlogTags = await BuildBlogTagList(blogFormData.BlogTagIds, blog);
+            var blogTagList = await BuildBlogTagList(blogFormData.BlogTagIds, blog);
+            var updatedBlogTagList = await UpdateBlogTags(blog, blogTagList);
+
+            if (!String.IsNullOrEmpty(blogFormData.NewTags))
+                updatedBlogTagList.AddRange(await CreateNewTags(blogFormData.NewTags, blog));
+            
+            blog.BlogTags = updatedBlogTagList;
 
             if (blogFormData.BlogId.HasValue)
             {
@@ -127,6 +133,21 @@ namespace AndrewPino.Controllers
             return View(blog);
         }
 
+        private async Task<List<BlogTag>> UpdateBlogTags(Blog blog, List<BlogTag> blogTagList)
+        {
+            var existingBlogTags = _context.BlogTags.Where(bt => bt.BlogId == blog.BlogId).ToList();
+
+            if (existingBlogTags.Count > 0)
+            {
+                var blogTagsToDelete = existingBlogTags.Where(et => blogTagList.All(bt => bt.TagId != et.TagId)).ToList();
+                _context.BlogTags.RemoveRange(blogTagsToDelete);
+                existingBlogTags.RemoveAll(et => blogTagsToDelete.Any(bttd => bttd.TagId == et.TagId));
+            }
+
+            blogTagList.RemoveAll(btl => existingBlogTags.Any(ebt => ebt.TagId == btl.TagId));
+            return blogTagList;
+        }
+
         private async Task<List<BlogTag>> BuildBlogTagList(List<int> blogTagIds, Blog blog)
         {
             if (blogTagIds == null || blogTagIds.Count == 0) 
@@ -136,14 +157,42 @@ namespace AndrewPino.Controllers
 
             var usedTags = existingTags.Where(et => blogTagIds.Contains(et.TagId));
 
-            var blogBlogTags = 
+            var blogTags = 
                 usedTags.Select(tag => new BlogTag
                 {
                     Blog = blog,
                     Tag = tag
                 }).ToList();
 
-            return blogBlogTags;
+            return blogTags;
+        }
+
+        private async Task<List<BlogTag>> CreateNewTags(string newTagText, Blog blog)
+        {
+            var tagList = newTagText.Split(',', StringSplitOptions.RemoveEmptyEntries).Select(t => t.Trim()).ToList();
+            if (tagList.Count == 0) return Enumerable.Empty<BlogTag>().ToList();
+
+            var existingTags = await _context.Tags.ToListAsync();
+            var uniqueTags = tagList.Where(newTag =>
+                !existingTags.Any(et => String.Equals(et.Text, newTag, StringComparison.CurrentCultureIgnoreCase))).ToList();
+
+            if (uniqueTags.Count > 0)
+            {
+                await _context.Tags.AddRangeAsync(uniqueTags.Select(t => new Tag { Text = t}));
+                await _context.SaveChangesAsync();
+            }
+            
+            existingTags = await _context.Tags.ToListAsync();
+            var newTags = existingTags.Where(et => uniqueTags.Contains(et.Text)).ToList();
+            
+            var blogTags = 
+                newTags.Select(tag => new BlogTag
+                {
+                    Blog = blog,
+                    Tag = tag
+                }).ToList();
+
+            return blogTags;
         }
 
         private async Task<string> HandleFile(IFormFile file)

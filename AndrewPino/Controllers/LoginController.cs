@@ -7,7 +7,9 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Routing;
 using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.Primitives;
 
 namespace AndrewPino.Controllers
 {
@@ -27,7 +29,7 @@ namespace AndrewPino.Controllers
         }
         
         [HttpPost]
-        public async Task<IActionResult> Login([FromForm] string userName, [FromForm] string password)
+        public async Task<IActionResult> Login([FromForm] string userName, [FromForm] string password, string returnUrl)
         {
             var user = _configuration.GetSection("BlogUser").Get<BlogUser>();
             
@@ -43,8 +45,8 @@ namespace AndrewPino.Controllers
                     
                     var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                     await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
-                    
-                    return RedirectToAction("Entry", "Blog");
+
+                    return Redirect(returnUrl);
                 }
             }
             

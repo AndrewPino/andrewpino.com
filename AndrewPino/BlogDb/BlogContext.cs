@@ -15,6 +15,8 @@ namespace AndrewPino.BlogDb
         
         public DbSet<Tag> Tags { get; set; }
         
+        public DbSet<BlogTag> BlogTags { get; set; }
+        
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<Blog>()
@@ -33,20 +35,6 @@ namespace AndrewPino.BlogDb
                 .WithOne(bt => bt.Tag)
                 .HasPrincipalKey(t => t.TagId)
                 .HasForeignKey(bt => bt.TagId);
-            
-
-            // modelBuilder.Entity<BlogTag>()
-            //     .HasKey(t => new { t.BlogId, t.TagId });
-
-            // modelBuilder.Entity<BlogTag>()
-            //     .HasOne(bbt => bbt.Blog)
-            //     .WithMany(b => b.BlogTags)
-            //     .HasForeignKey(bt => bt.BlogId);
-            //
-            // modelBuilder.Entity<BlogTag>()
-            //     .HasOne(bbt => bbt.Tag)
-            //     .WithMany(b => b.BlogTags)
-            //     .HasForeignKey(pt => pt.TagId);
         }
     }
 }
