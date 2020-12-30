@@ -1,10 +1,12 @@
-@model LoginMessage
 @{
     ViewData["Title"] = "Blog Editor Login";
 }
 <div class="login-form-container">
     <form class="login-form" method="post" enctype="multipart/form-data" asp-controller="Login" asp-action="Login">
-        <input type="hidden" name="returnUrl" value="@Url.ActionContext.HttpContext.Request.Query["ReturnUrl"][0]">
+        @if (Url.ActionContext.HttpContext.Request.Query["ReturnUrl"].Count > 0)
+        {
+            <input type="hidden" name="returnUrl" value="@Url.ActionContext.HttpContext.Request.Query["ReturnUrl"][0]">
+        }
         <div class="login-form-username-container">
             <label for="userName" class="login-form-username-label">User Name</label>
             <div class="login-form-username-input-container">
@@ -22,6 +24,9 @@
         </div>
     </form>
 </div>
-<div class="login-message">
-    @Model.Message
-</div>
+@if (Url.ActionContext.HttpContext.Request.Query["InvalidLogin"].Count > 0)
+{
+    <div class="login-message">
+        Invalid Attempt
+    </div>
+}

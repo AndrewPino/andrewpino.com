@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
 using System.Security.Claims;
+using System.Text.Encodings.Web;
 using System.Threading.Tasks;
+using System.Web;
 using AndrewPino.Models;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -16,7 +18,6 @@ namespace AndrewPino.Controllers
     public class LoginController : Controller
     {
         private readonly IConfiguration _configuration;
-        private readonly LoginMessage _loginMessage = new();
         
         public LoginController(IConfiguration configuration)
         {
@@ -25,7 +26,7 @@ namespace AndrewPino.Controllers
         
         public IActionResult Index()
         {
-            return View(_loginMessage);
+            return View();
         }
         
         [HttpPost]
@@ -46,13 +47,14 @@ namespace AndrewPino.Controllers
                     var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
                     await HttpContext.SignInAsync(CookieAuthenticationDefaults.AuthenticationScheme, new ClaimsPrincipal(claimsIdentity));
 
-                    return Redirect(returnUrl);
+                    return Redirect(!String.IsNullOrEmpty(returnUrl) ? returnUrl : "/Blog/List");
                 }
             }
+
+            var activeReturnUrl = String.IsNullOrEmpty(returnUrl) ? "/Blog/Entry" : returnUrl;
+            var encodedReturnUrl = HttpUtility.UrlEncode(activeReturnUrl);
             
-            _loginMessage.Message = "Invalid Attempt";
-            
-            return View("Index", _loginMessage);
+            return Redirect($"/Login?ReturnUrl={encodedReturnUrl}&InvalidLogin=1");
         }
 
         public async Task<IActionResult> Logout()
