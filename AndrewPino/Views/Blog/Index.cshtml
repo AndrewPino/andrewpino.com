@@ -62,7 +62,7 @@
               }
               @foreach (var tag in blog.BlogTags.Select(bbt => bbt.Tag))
               {
-                <span class="badge badge-pill badge-primary">@tag.Text</span>
+                <span class="badge badge-pill badge-primary">#@tag.Text</span>
               }
             </p>
           </div>
