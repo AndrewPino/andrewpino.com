@@ -112,7 +112,7 @@ namespace AndrewPino.Controllers
             }
 
             var blogTagList = await BuildBlogTagList(blogFormData.BlogTagIds, blog);
-            var updatedBlogTagList = await UpdateBlogTags(blog, blogTagList);
+            var updatedBlogTagList = UpdateBlogTags(blog, blogTagList);
 
             if (!String.IsNullOrEmpty(blogFormData.NewTags))
                 updatedBlogTagList.AddRange(await CreateNewTags(blogFormData.NewTags, blog));
@@ -133,7 +133,7 @@ namespace AndrewPino.Controllers
             return View(blog);
         }
 
-        private async Task<List<BlogTag>> UpdateBlogTags(Blog blog, List<BlogTag> blogTagList)
+        private List<BlogTag> UpdateBlogTags(Blog blog, List<BlogTag> blogTagList)
         {
             var existingBlogTags = _context.BlogTags.Where(bt => bt.BlogId == blog.BlogId).ToList();
 
